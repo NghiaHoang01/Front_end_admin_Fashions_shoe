@@ -62,7 +62,7 @@ const SideBar = (props) => {
 
     const header = useSelector(headerSelector)
 
-    return <div className={`${header.showSideBar ? 'w-[15%]' : 'w-0'} side-bar overflow-y-auto fixed top-[80px] left-0 bottom-0 duration-100 ease-linear`}>
+    return <div className={`${header.showSideBar ? 'w-[15%]' : 'w-0'} h-screen side-bar overflow-y-auto fixed top-[80px] left-0 bottom-0 duration-100 ease-linear`}>
         <ul className="py-6 px-4 bg-alice-blue h-full">
             {
                 items.map((item, index) => <li

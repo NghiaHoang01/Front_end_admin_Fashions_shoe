@@ -56,3 +56,39 @@ export const LIST_COLORS = [
         label: 'Multi-Color'
     },
 ]
+
+export const STATUS_ORDER = {
+    PENDING: 'PENDING',
+    CONFIRMED: 'CONFIRMED',
+    SHIPPED: 'SHIPPED',
+    DELIVERED: 'DELIVERED'
+}
+
+export const LIST_ORDER_STATUS = [
+    {
+        value: 'PENDING',
+        label: 'Pending'
+    }, {
+        value: 'CONFIRMED',
+        label: 'Confirmed'
+    }, {
+        value: 'SHIPPED',
+        label: 'Shipped'
+    }, {
+        value: 'DELIVERED',
+        label: 'Delivered'
+    },
+]
+
+export const LIST_PAYMENT_METHOD = [
+    {
+        value: 'COD',
+        label: 'COD'
+    }, {
+        value: 'VNPAY',
+        label: 'VNPAY'
+    }, {
+        value: 'MOMO',
+        label: 'MOMO'
+    }
+]

@@ -154,7 +154,7 @@ const PageProducts = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [paging, products.productInfor])
 
-    return <Spin tip="Loading" size="large" spinning={products.isLoading}>
+    return <Spin tip="Loading" size="large" spinning={products.isLoading || products.isLoadListProducts}>
         <div className="page-products h-screen px-4 pb-7 pt-[15px] bg-white">
             <FormSearch
                 formSearchProduct={formSearchProduct}

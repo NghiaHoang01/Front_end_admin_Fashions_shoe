@@ -3,6 +3,7 @@ import { createNewProductService, deleteProductService, deleteSomeProductsServic
 
 const initialState = {
     isLoading: false,
+    isLoadListProducts: [],
     listBrands: [],
     listParentCategories: [],
     listChildCategories: [],
@@ -109,10 +110,10 @@ export const products = createSlice({
 
             // filter products
             .addCase(getAllProductsAsync.pending, (state) => {
-                state.isLoading = true
+                state.isLoadListProducts = true
             })
             .addCase(getAllProductsAsync.fulfilled, (state, action) => {
-                state.isLoading = false
+                state.isLoadListProducts = false
                 state.listProducts = action.payload.results.listProducts
                 state.totalProduct = action.payload.results.totalProduct
             })

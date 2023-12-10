@@ -112,10 +112,10 @@ const FormSearch = (props) => {
         >
             <Flex wrap="wrap" justify='space-between'>
                 <Form.Item
-                    label={<p className="text-eclipse text-[16.5px] tracking-[0.75px] font-semibold">Name</p>}
-                    name="name"
+                    label={<p className="text-eclipse text-[16.5px] tracking-[0.75px] font-semibold">Id Product</p>}
+                    name="id"
                     style={{
-                        width: 300,
+                        width: 235,
                         marginBottom: 10
                     }}
                 >
@@ -123,11 +123,66 @@ const FormSearch = (props) => {
                 </Form.Item>
 
                 <Form.Item
+                    label={<p className="text-eclipse text-[16.5px] tracking-[0.75px] font-semibold">Name</p>}
+                    name="name"
+                    style={{
+                        width: 235,
+                        marginBottom: 10
+                    }}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    label={<p className="text-eclipse text-[16.5px] tracking-[0.75px] font-semibold">Price</p>}
+                    name="price"
+                    style={{
+                        width: 235,
+                        marginBottom: 10
+                    }}
+                >
+                    <InputNumber
+                        style={{ width: '100%' }}
+                        min={0}
+                        formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                        parser={(value) => value.replace(/\$\s?|(,*)/g, '')}
+                    />
+                </Form.Item>
+
+                <Form.Item
+                    label={<p className="text-eclipse text-[16.5px] tracking-[0.75px] font-semibold">Color</p>}
+                    name="color"
+                    style={{
+                        width: 235,
+                        marginBottom: 10
+                    }}
+                >
+                    <Select
+                        options={LIST_COLORS}
+                    />
+                </Form.Item>
+
+                <Form.Item
+                    label={<p className="text-eclipse text-[16.5px] tracking-[0.75px] font-semibold">Sale %</p>}
+                    name="discountedPercent"
+                    style={{
+                        width: 235,
+                        marginBottom: 10
+                    }}
+                >
+                    <InputNumber
+                        style={{ width: '100%' }}
+                        min={0}
+                        max={100} />
+                </Form.Item>
+            </Flex>
+
+            <Flex wrap="wrap" justify='space-between'>
+                <Form.Item
                     label={<p className="text-eclipse text-[16.5px] tracking-[0.75px] font-semibold">Brand</p>}
                     name="brandId"
                     style={{
-                        width: 300,
-                        marginBottom: 10
+                        width: 235
                     }}
                 >
                     <Select
@@ -140,8 +195,7 @@ const FormSearch = (props) => {
                     label={<p className="text-eclipse text-[16.5px] tracking-[0.75px] font-semibold">Parent Category</p>}
                     name="parentCategoryId"
                     style={{
-                        width: 300,
-                        marginBottom: 10
+                        width: 235
                     }}
                 >
                     <Select
@@ -154,49 +208,19 @@ const FormSearch = (props) => {
                     label={<p className="text-eclipse text-[16.5px] tracking-[0.75px] font-semibold">Child Category</p>}
                     name="childCategoryId"
                     style={{
-                        width: 300,
-                        marginBottom: 10
+                        width: 235
                     }}
                 >
                     <Select
                         options={childCategories}
                     />
                 </Form.Item>
-            </Flex>
-
-            <Flex wrap="wrap" justify='space-between'>
-                <Form.Item
-                    label={<p className="text-eclipse text-[16.5px] tracking-[0.75px] font-semibold">Color</p>}
-                    name="color"
-                    style={{
-                        width: 300,
-                    }}
-                >
-                    <Select
-                        options={LIST_COLORS}
-                    />
-                </Form.Item>
-
-                <Form.Item
-                    label={<p className="text-eclipse text-[16.5px] tracking-[0.75px] font-semibold">Sale %</p>}
-                    name="discountedPercent"
-                    style={{
-                        width: 300,
-                        margin: 0
-                    }}
-                >
-                    <InputNumber
-                        style={{ width: '100%' }}
-                        min={0}
-                        max={100} />
-                </Form.Item>
 
                 <Form.Item
                     label={<p className="text-eclipse text-[16.5px] tracking-[0.75px] font-semibold">Create By</p>}
                     name="createBy"
                     style={{
-                        width: 300,
-                        margin: 0
+                        width: 235
                     }}
                 >
                     <Input />
@@ -206,8 +230,7 @@ const FormSearch = (props) => {
                     label={<p className="text-eclipse text-[16.5px] tracking-[0.75px] font-semibold">Update By</p>}
                     name="updateBy"
                     style={{
-                        width: 300,
-                        margin: 0
+                        width: 235
                     }}
                 >
                     <Input />

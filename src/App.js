@@ -29,7 +29,9 @@ function App() {
               controlHeight: '40',
             }, Select: {
               controlHeight: '40',
-            }
+            }, DatePicker: {
+              controlHeight: '40'
+            },
           },
         }}
       >
