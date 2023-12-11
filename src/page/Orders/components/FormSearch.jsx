@@ -121,13 +121,13 @@ const FormSearch = (props) => {
     const handleChangeProvince = () => {
         formSearchOrder.resetFields(['district', 'ward'])
         setDistricts([])
-        setWards('')
+        setWards([])
         getDistrictByProvince(formSearchOrder.getFieldValue(['province']))
     }
 
     const handleChangeDistrict = () => {
         formSearchOrder.resetFields(['ward'])
-        setWards('')
+        setWards([])
         getWardByDistrict(formSearchOrder.getFieldValue(['district']))
     }
 
@@ -146,6 +146,9 @@ const FormSearch = (props) => {
             autoComplete="off"
             className={`form-search form ${showFormSearch && 'show'}`}
             layout="vertical"
+            initialValues={{
+                province: 10
+            }}
         >
             <Flex wrap="wrap" justify='space-between'>
                 <Form.Item

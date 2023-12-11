@@ -44,7 +44,7 @@ const AppRoutes = () => {
             <Route element={<PrivateRoutes />} >
                 <Route path={APP_URLS.URL_PRODUCTS} element={<MainPage page={<PageProducts openNotification={openNotification} />} />} />
                 <Route path={APP_URLS.URL_CUSTOMERS} element={<MainPage page={<PageCustomers />} />} />
-                <Route path={APP_URLS.URL_ACCOUNT} element={<MainPage page={<PageAccount />} />} />
+                <Route path={APP_URLS.URL_ACCOUNT} element={<MainPage page={<PageAccount openNotification={openNotification} />} />} />
                 <Route path={APP_URLS.URL_COMMENTS} element={<MainPage page={<PageComments />} />} />
                 <Route path={APP_URLS.URL_ORDERS} element={<MainPage page={<PageOrders openNotification={openNotification} />} />} />
                 <Route path={APP_URLS.URL_BRAND_CATEGORY} element={<MainPage page={<PageBrandAndCategory />} />} />

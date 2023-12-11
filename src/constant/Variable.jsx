@@ -92,3 +92,18 @@ export const LIST_PAYMENT_METHOD = [
         label: 'MOMO'
     }
 ]
+
+export const LIST_GENDER = [
+    {
+        value: 'MALE',
+        label: 'Male',
+    },
+    {
+        value: 'FEMALE',
+        label: 'Female',
+    },
+    {
+        value: 'ORTHER',
+        label: 'Other',
+    }
+]

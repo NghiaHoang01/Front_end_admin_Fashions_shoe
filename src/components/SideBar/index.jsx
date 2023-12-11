@@ -55,7 +55,7 @@ const SideBar = (props) => {
             label: <NavLink to={APP_URLS.URL_ACCOUNT} className="sidebar--item flex text-[16px] pl-4 py-3">
                 <span></span>
                 <img className="w-[25px] h-[25px] object-cover object-center mr-2" src={account} alt="" />
-                Account
+                Profile
             </NavLink>
         }
     ]

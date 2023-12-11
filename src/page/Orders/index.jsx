@@ -1,15 +1,12 @@
-import { Popconfirm, Select, Spin, Table } from 'antd'
+import { Popconfirm, Spin, Table } from 'antd'
 import { useForm } from 'antd/es/form/Form'
-import { LIST_ORDER_STATUS, STATUS_ORDER } from 'constant/Variable'
+import { STATUS_ORDER } from 'constant/Variable'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { ConvertDateHaveHour } from 'utils/ConvertDateHaveHour'
 import { TabTile } from 'utils/TabTile'
-import DistrictRow from './components/DistrictRow'
 import FormSearch from './components/FormSearch'
-import ModalorderDetail from './components/ModalOrder'
-import ProvinceRow from './components/ProvinceRow'
-import WardRow from './components/WardRow'
+import ModalOrderDetail from './components/ModalOrder'
+import generateColumnsData from './components/CoulmnsData'
 import { confirmedOrderAsync, deleteOrderAsync, deleteSomeOrdersAsync, deliveredOrderAsync, filterOrdersAsync, ordersSelector, shippedOrderAsync } from './OrdersSlice'
 import './Style.css'
 
@@ -136,188 +133,15 @@ const PageOrders = (props) => {
         }
     }
 
-    const columns = [
-        {
-            title: 'ID',
-            dataIndex: 'id',
-            key: 'id',
-            disabled: true
-        },
-        {
-            title: 'STT',
-            dataIndex: 'STT',
-            key: 'STT',
-            render: (_, record, index) => {
-                return <p>
-                    {((paging.pageIndex - 1) * paging.pageSize) + index + 1}
-                </p>
-            },
-            width: 60,
-            align: 'center'
-        }, {
-            title: 'Order Date',
-            dataIndex: 'orderDate',
-            key: 'orderDate',
-            width: 160,
-            align: 'center',
-            hidden: hiddenColumn,
-            ellipsis: true,
-            render: (_, record) => <p>{ConvertDateHaveHour(record.orderDate)}</p>,
-        }, {
-            title: 'Delivery Date',
-            dataIndex: 'deliveryDate',
-            key: 'deliveryDate',
-            width: 160,
-            align: 'center',
-            ellipsis: true,
-            hidden: hiddenColumn,
-            render: (_, record) => {
-                if (record.deliveryDate !== null) {
-                    return ConvertDateHaveHour(record.deliveryDate)
-                } else {
-                    return <p>...</p>
-                }
-            },
-        }, {
-            title: 'Receiving Date',
-            dataIndex: 'receivingDate',
-            key: 'receivingDate',
-            width: 160,
-            align: 'center',
-            hidden: hiddenColumn,
-            ellipsis: true,
-            render: (_, record) => {
-                if (record.receivingDate !== null) {
-                    return ConvertDateHaveHour(record.receivingDate)
-                } else {
-                    return <p>...</p>
-                }
-            },
-        }, {
-            title: 'Order By',
-            dataIndex: 'email',
-            key: 'email',
-            width: 180,
-            ellipsis: true
-        }, {
-            title: 'Full Name',
-            dataIndex: 'fullName',
-            key: 'fullName',
-            width: 180,
-            ellipsis: true,
-            hidden: hiddenColumn
-        }, {
-            title: 'Phone Number',
-            dataIndex: 'phoneNumber',
-            key: 'phoneNumber',
-            width: 130,
-            align: 'center'
-        }, {
-            title: 'Alternate Phone',
-            dataIndex: 'alternatePhone',
-            key: 'alternatePhone',
-            width: 135,
-            hidden: hiddenColumn,
-            align: 'center'
-        }, {
-            title: 'Payment',
-            dataIndex: 'paymentMethod',
-            key: 'paymentMethod',
-            width: 100,
-            align: 'center',
-            hidden: hiddenColumn
-        },
-        {
-            title: 'Address',
-            dataIndex: 'address',
-            key: 'adrress',
-            ellipsis: true,
-            width: 220,
-            hidden: hiddenColumn
-        }, {
-            title: 'Ward',
-            dataIndex: 'ward',
-            key: 'ward',
-            width: 180,
-            hidden: hiddenColumn,
-            render: (_, record) => <WardRow district={record.district} ward={record.ward} />,
-        }, {
-            title: 'District',
-            dataIndex: 'district',
-            key: 'district',
-            width: 180,
-            hidden: hiddenColumn,
-            render: (_, record) => <DistrictRow province={record.province} district={record.district} />,
-        }, {
-            title: 'Province',
-            dataIndex: 'province',
-            key: 'province',
-            width: 180,
-            render: (_, record) => <ProvinceRow province={record.province} />,
-        }, {
-            title: 'Transport Fee',
-            dataIndex: 'transportFee',
-            key: 'transportFee',
-            align: 'center',
-            width: 120,
-            render: (_, record) => <p>{record.transportFee !== 0 ? <>{record.transportFee.toLocaleString()}<sup>đ</sup></> : 'Free'}</p>
-        }, {
-            title: 'Total Price',
-            dataIndex: 'totalPrice',
-            key: 'totalPrice',
-            align: 'center',
-            width: 120,
-            render: (_, record) => <p>{record.totalPrice.toLocaleString()}<sup>đ</sup></p>
-        }, {
-            title: 'Notes',
-            dataIndex: 'notes',
-            key: 'notes',
-            width: 180,
-            ellipsis: true,
-        }, {
-            title: 'Order Status',
-            dataIndex: 'statusOrder',
-            key: 'statusOrder',
-            width: 140,
-            align: 'center',
-            render: (_, record) => {
-                const index = LIST_ORDER_STATUS.findIndex(item => item['value'] === record.statusOrder)
-                const listStatusOrders = LIST_ORDER_STATUS.slice(index)
-                return <Select
-                    options={listStatusOrders}
-                    defaultValue={record.statusOrder}
-                    onChange={(value) => handleUpdateOrder(value, record)}
-                    style={{ width: '100%' }} />
-            }
-        }, {
-            title: 'Action',
-            key: 'action',
-            width: 100,
-            align: 'center',
-            render: (_, record) => (
-                <div className="text-[21px] flex items-center">
-                    <i
-                        title="Order Line"
-                        className="fa-solid fa-image cursor-pointer mx-2 text-green-500 duration-150 ease-linear hover:text-green-300"
-                        onClick={() => handleOpenModalOrder(record)}
-                    >
-                    </i>
-                    <Popconfirm
-                        title="Delete this order"
-                        description="Are you sure to delete this product?"
-                        onConfirm={() => handleDeleteOrder(record)}
-                        okText="Yes"
-                        cancelText="No"
-                        disabled={deleteSome}
-                    >
-                        <i
-                            title="Delete"
-                            className={`fa-solid fa-trash-can ${!deleteSome ? 'cursor-pointer hover:text-red-400' : 'cursor-no-drop'} mx-2 text-red-custom`}></i>
-                    </Popconfirm>
-                </div>
-            ),
-        },
-    ].filter(item => !item.hidden && !item.disabled)
+    // generateColumnsData
+    const columnsData = generateColumnsData(
+        { paging: paging },
+        { hiddenColumn: hiddenColumn },
+        { handleUpdateOrder: handleUpdateOrder },
+        { handleOpenModalOrder: handleOpenModalOrder },
+        { handleDeleteOrder: handleDeleteOrder },
+        { deleteSome: deleteSome }
+    )
 
     useEffect(() => {
         filterOrders(paging)
@@ -353,7 +177,7 @@ const PageOrders = (props) => {
                 style={{
                     marginTop: 20
                 }}
-                columns={columns}
+                columns={columnsData}
                 dataSource={order.listOrders}
                 scroll={{ x: "150" }}
                 rowKey='id'
@@ -368,7 +192,7 @@ const PageOrders = (props) => {
                 rowSelection={rowSelection}
             />
 
-            <ModalorderDetail
+            <ModalOrderDetail
                 isModalOrderOpen={isModalOrderOpen}
                 setIsModalOrderOpen={setIsModalOrderOpen}
                 listProductsOfOrder={listProductsOfOrder}

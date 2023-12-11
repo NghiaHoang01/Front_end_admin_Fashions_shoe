@@ -1,7 +1,7 @@
 import { Button, Flex, Image, List, Modal } from "antd"
 import { Capitalize } from "utils/Capitlalize"
 
-const ModalorderDetail = (props) => {
+const ModalOrderDetail = (props) => {
 
     const { listProductsOfOrder, isModalOrderOpen, setIsModalOrderOpen, setListProductOfOrder } = props
 
@@ -56,4 +56,4 @@ const ModalorderDetail = (props) => {
     </Modal>
 }
 
-export default ModalorderDetail
+export default ModalOrderDetail

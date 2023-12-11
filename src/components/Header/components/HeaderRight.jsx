@@ -11,11 +11,12 @@ import { logoutAsync } from "page/Login/LoginSlice";
 
 const HeaderRight = (props) => {
 
-    const admin = JSON.parse(localStorage.getItem("admin"))
+    const { admin } = props
 
     const [isModalOpen, setIsModalProductOpen] = useState(false)
 
     const dispatch = useDispatch()
+
 
     const navigate = useNavigate()
 
@@ -31,7 +32,7 @@ const HeaderRight = (props) => {
     const handleOk = async () => {
         const response = await dispatch(logoutAsync())
         if (response.payload.success) {
-            localStorage.removeItem("admin")
+            await localStorage.removeItem("admin")
             navigate(APP_URLS.URL_LOGIN)
             setIsModalProductOpen(false)
         }
@@ -41,7 +42,7 @@ const HeaderRight = (props) => {
         {
             key: '1',
             label: (
-                <Link to={APP_URLS.URL_PRODUCTS}>
+                <Link to={APP_URLS.URL_ACCOUNT}>
                     My profile
                 </Link>
             ),
@@ -71,6 +72,8 @@ const HeaderRight = (props) => {
         await dispatch(handleShowSideBar())
     }
 
+
+
     return <div className="h-full bg-transparent w-[84%] p-4 mr-4 flex justify-between items-center overflow-hidden">
         <i
             className="fa-solid fa-bars text-[25px] text-white cursor-pointer duration-150 ease-linear hover:text-red-custom"
@@ -88,7 +91,7 @@ const HeaderRight = (props) => {
                 <div className="w-11 h-11 rounded-[50%] border-[2px] border-grey overflow-hidden">
                     <img
                         className="object-cover object-center w-full h-full"
-                        src={admin.imageBase64 !== null ? `data:image/png;base64,${admin?.imageBase64}` : (admin.gender === MALE ? maleImage : femaleImage)}
+                        src={admin?.imageBase64 !== null ? admin.imageBase64 : (admin.gender === MALE ? maleImage : femaleImage)}
                         alt="error" />
                 </div>
             </div>
