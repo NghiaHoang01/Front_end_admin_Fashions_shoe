@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { TabTile } from "utils/TabTile";
-import { loginAsync, loginSelector } from "../LoginSlice";
+import { loginAsync, loginSelector, sendSuccess } from "../LoginSlice";
 import { Input, Form, Spin } from 'antd'
 
 const LoginForm = (props) => {
@@ -23,7 +23,7 @@ const LoginForm = (props) => {
         if (response.payload.success) {
             formLogin.resetFields()
             localStorage.setItem("admin", JSON.stringify(response.payload.results))
-            navigate(APP_URLS.URL_PRODUCTS)
+            navigate(APP_URLS.URL_ORDERS)
         } else {
             switch (response.payload.status) {
                 case 500:
@@ -41,8 +41,12 @@ const LoginForm = (props) => {
     useEffect(() => {
         TabTile('Login')
 
-        if (login.status.message !== '' && login.status.success) {
-            props.openNotification(login.status.message, 'success')
+        if (login.sendSuccess.title !== '' && login.sendSuccess.success) {
+            props.openNotification(login.sendSuccess.title, 'success')
+            dispatch(sendSuccess({
+                success: false,
+                title: ''
+            }))
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

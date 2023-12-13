@@ -4,6 +4,8 @@ import loginReducer from 'page/Login/LoginSlice'
 import productsReducer from 'page/Products/ProductsSlice'
 import ordersReducer from "page/Orders/OrdersSlice"
 import accountReducer from 'page/Account/AccountSlice'
+import brandsReducer from 'page/BrandAndCategory/BrandsSlice'
+import passwordReducer from "page/Password/PasswordSlice"
 
 const store = configureStore({
     reducer: {
@@ -11,7 +13,9 @@ const store = configureStore({
         login: loginReducer,
         products: productsReducer,
         orders: ordersReducer,
-        account: accountReducer
+        account: accountReducer,
+        brands: brandsReducer,
+        password: passwordReducer
     }
 })
 

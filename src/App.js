@@ -31,7 +31,10 @@ function App() {
               controlHeight: '40',
             }, DatePicker: {
               controlHeight: '40'
-            },
+            }, Tree: {
+              nodeSelectedBg: 'transparent',
+              nodeHoverBg: 'transparent'
+            }
           },
         }}
       >

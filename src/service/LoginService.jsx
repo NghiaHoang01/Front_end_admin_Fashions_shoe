@@ -45,3 +45,11 @@ export const resetPasswordService = (params) => {
         data: params
     })
 }
+
+// change password
+export const changePasswordService = (params) => {
+    return request('/api/user/password', {
+        method: 'PUT',
+        data: params
+    })
+}

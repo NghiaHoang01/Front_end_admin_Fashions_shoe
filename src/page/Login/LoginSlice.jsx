@@ -10,7 +10,11 @@ const initialState = {
     sendError: {
         error: false,
         title: ''
-    }
+    }, sendSuccess: {
+        success: false,
+        title: ''
+    },
+
 }
 
 // login
@@ -56,6 +60,10 @@ export const login = createSlice({
         sendError: (state, action) => {
             state.sendError.error = action.payload.error
             state.sendError.title = action.payload.title
+        },
+        sendSuccess: (state, action) => {
+            state.sendSuccess.success = action.payload.success
+            state.sendSuccess.title = action.payload.title
         }
     },
     extraReducers: builder => {
@@ -105,7 +113,7 @@ export const login = createSlice({
     }
 })
 
-export const { checkEnterEmail, checkEnterOtpCode, sendError } = login.actions
+export const { checkEnterEmail, checkEnterOtpCode, sendError, sendSuccess } = login.actions
 
 export const loginSelector = state => state.login
 

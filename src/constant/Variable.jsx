@@ -14,7 +14,8 @@ export const APP_URLS = {
     URL_ORDERS: '/orders',
     URL_COMMENTS: '/comments',
     URL_ACCOUNT: '/account',
-    URL_BRAND_CATEGORY: '/brand-category'
+    URL_BRAND_CATEGORY: '/brands',
+    URL_CHANGE_PASSWORD: '/change-password'
 }
 
 export const LIST_COLORS = [

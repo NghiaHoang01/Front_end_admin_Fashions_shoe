@@ -10,7 +10,6 @@
     border: 1px solid var(--red);
     background-color: var(--red);
     color: var(--white);
-    /* text-transform: uppercase; */
     letter-spacing: 0.1em;
     overflow: hidden;
     z-index: 1;

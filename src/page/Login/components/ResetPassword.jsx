@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { TabTile } from "utils/TabTile";
-import { checkEnterEmail, checkEnterOtpCode, loginSelector, resetPasswordAsync, sendError } from "../LoginSlice";
+import { checkEnterEmail, checkEnterOtpCode, loginSelector, resetPasswordAsync, sendError, sendSuccess } from "../LoginSlice";
 
 const ResetPasswordForm = (props) => {
 
@@ -23,6 +23,10 @@ const ResetPasswordForm = (props) => {
             if (response.payload.success) {
                 await dispatch(checkEnterEmail(false))
                 await dispatch(checkEnterOtpCode(false))
+                await dispatch(sendSuccess({
+                    success: true,
+                    title: response.payload.message + ', Please log in again !!!'
+                }))
                 navigate(APP_URLS.URL_LOGIN)
             } else {
                 props.openNotification(response.payload.message)

@@ -13,9 +13,10 @@ import PageCustomers from "page/Customers"
 import PageAccount from "page/Account"
 import PageComments from "page/Comments"
 import PageOrders from "page/Orders"
-import PageBrandAndCategory from "page/BrandAndCategory"
 import { notification } from 'antd';
 import ErrorPage from "page/ErrorPage"
+import PageBrands from "page/BrandAndCategory"
+import PagePassword from "page/Password"
 
 const AppRoutes = () => {
     // notification
@@ -47,7 +48,8 @@ const AppRoutes = () => {
                 <Route path={APP_URLS.URL_ACCOUNT} element={<MainPage page={<PageAccount openNotification={openNotification} />} />} />
                 <Route path={APP_URLS.URL_COMMENTS} element={<MainPage page={<PageComments />} />} />
                 <Route path={APP_URLS.URL_ORDERS} element={<MainPage page={<PageOrders openNotification={openNotification} />} />} />
-                <Route path={APP_URLS.URL_BRAND_CATEGORY} element={<MainPage page={<PageBrandAndCategory />} />} />
+                <Route path={APP_URLS.URL_BRAND_CATEGORY} element={<MainPage page={<PageBrands openNotification={openNotification} />} />} />
+                <Route path={APP_URLS.URL_CHANGE_PASSWORD} element={<MainPage page={<PagePassword openNotification={openNotification} />} />} />
             </Route>
 
             <Route path="*" element={<MainPage page={<ErrorPage />} />} />

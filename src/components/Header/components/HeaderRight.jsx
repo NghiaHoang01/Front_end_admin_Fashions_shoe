@@ -7,7 +7,7 @@ import { ExclamationCircleFilled } from '@ant-design/icons';
 import { useState } from "react";
 import maleImage from 'assets/Image/Male.jpg'
 import femaleImage from 'assets/Image/Female.jpg'
-import { logoutAsync } from "page/Login/LoginSlice";
+import { logoutAsync, sendSuccess } from "page/Login/LoginSlice";
 
 const HeaderRight = (props) => {
 
@@ -33,6 +33,10 @@ const HeaderRight = (props) => {
         const response = await dispatch(logoutAsync())
         if (response.payload.success) {
             await localStorage.removeItem("admin")
+            await dispatch(sendSuccess({
+                success: true,
+                title: response.payload.message
+            }))
             navigate(APP_URLS.URL_LOGIN)
             setIsModalProductOpen(false)
         }
@@ -50,7 +54,7 @@ const HeaderRight = (props) => {
         {
             key: '2',
             label: (
-                <Link to={APP_URLS.URL_PRODUCTS}>
+                <Link to={APP_URLS.URL_CHANGE_PASSWORD}>
                     Change password
                 </Link>
             ),
