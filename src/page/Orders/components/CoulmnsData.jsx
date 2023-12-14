@@ -104,6 +104,14 @@ export default ({ paging },
             hidden: hiddenColumn
         },
         {
+            title: 'Pay',
+            dataIndex: 'pay',
+            key: 'pay',
+            width: 100,
+            align: 'center',
+            hidden: hiddenColumn
+        },
+        {
             title: 'Address',
             dataIndex: 'address',
             key: 'adrress',
