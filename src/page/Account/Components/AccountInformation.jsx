@@ -69,15 +69,14 @@ const AccountInformation = (props) => {
     }
 
     const handleChangeProvince = () => {
-        formAccount.setFieldValue(['district', ''])
-        formAccount.setFieldValue(['ward', ''])
+        formAccount.resetFields(['district', 'ward'])
         setDistricts([])
         setWards([])
         getDistrictByProvince(formAccount.getFieldValue(['province']))
     }
 
     const handleChangeDistrict = () => {
-        formAccount.setFieldValue(['ward', ''])
+        formAccount.resetFields(['ward'])
         setWards([])
         getWardByDistrict(formAccount.getFieldValue(['district']))
     }
@@ -86,6 +85,14 @@ const AccountInformation = (props) => {
         getProvinces()
         getDistrictByProvince(admin.province)
         getWardByDistrict(admin.district)
+        formAccount.setFieldsValue({
+            ...admin,
+            createAt: ConvertDate(admin.createAt),
+            province: +admin.province,
+            district: +admin.district,
+            ward: +admin.ward
+
+        })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -93,20 +100,12 @@ const AccountInformation = (props) => {
         <Form
             name="formAccount"
             form={formAccount}
-            id={formAccount}
+            id="formAccount"
             onFinish={onFinish}
             autoComplete="off"
             layout="vertical"
             style={{
                 width: '100%'
-            }}
-            initialValues={{
-                ...admin,
-                createAt: ConvertDate(admin.createAt),
-                province: +admin.province,
-                district: +admin.district,
-                ward: +admin.ward
-
             }}
         >
             <Flex wrap="wrap" justify='space-between'>
@@ -222,6 +221,7 @@ const AccountInformation = (props) => {
                     <Select
                         options={provinces}
                         onChange={handleChangeProvince}
+                        placeholder='Select your province'
                     />
                 </Form.Item>
             </Flex>
@@ -238,6 +238,7 @@ const AccountInformation = (props) => {
                     <Select
                         options={districts}
                         onChange={handleChangeDistrict}
+                        placeholder='Select your district'
                     />
                 </Form.Item>
 
@@ -249,7 +250,7 @@ const AccountInformation = (props) => {
                         marginBottom: 10
                     }}
                 >
-                    <Select options={wards} />
+                    <Select options={wards} placeholder='Select your ward' />
                 </Form.Item>
             </Flex>
             <div className="text-center mt-2">

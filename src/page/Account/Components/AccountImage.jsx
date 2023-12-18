@@ -37,7 +37,7 @@ const AccountImage = (props) => {
                 </div>
                 <div className="text-grey text-[14px] font-normal tracking-[0.75px]">
                     <p>Maximum file size: 1MB</p>
-                    <p className="truncate">Format: .png, .jpg, .jpeg, .avif, .webp, .jfif</p>
+                    <p className="truncate w-full" title=".png, .jpg, .jpeg, .avif, .webp, .jfif">Format: .png, .jpg, .jpeg, .avif, .webp, .jfif</p>
                 </div>
             </div>
         </div>

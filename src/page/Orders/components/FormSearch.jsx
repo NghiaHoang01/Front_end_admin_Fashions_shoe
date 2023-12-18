@@ -74,6 +74,9 @@ const FormSearch = (props) => {
             pageIndex: 1,
             pageSize: 10
         })
+        formSearchOrder.resetFields()
+        setDistricts([])
+        setWards([])
     }
 
     const handleSearchOrders = (e) => {
@@ -140,15 +143,12 @@ const FormSearch = (props) => {
         <Form
             name="formSearchOrder"
             form={formSearchOrder}
-            id={formSearchOrder}
+            id="formSearchOrder"
             onFinish={onFinish}
             onReset={onReset}
             autoComplete="off"
             className={`form-search form ${showFormSearch && 'show'}`}
             layout="vertical"
-            initialValues={{
-                province: 10
-            }}
         >
             <Flex wrap="wrap" justify='space-between'>
                 <Form.Item
@@ -289,8 +289,8 @@ const FormSearch = (props) => {
         <div className='mt-1 w-full'>
             <Flex justify='space-between' align='center'>
                 <div>
-                    <button type="reset" form={formSearchOrder} className={`custom-btn w-[110px] px-5 py-[5px] mr-3 text-[14px] rounded-[8px] ${!showFormSearch && 'hidden'}`}>Reset</button>
-                    <button type="submmit" form={formSearchOrder} className={`custom-btn w-[110px] px-7 py-[5px] mr-3 text-[14px] rounded-[8px] ${!showFormSearch && 'hidden'}`}>Search</button>
+                    <button type="reset" form="formSearchOrder" className={`custom-btn w-[110px] px-5 py-[5px] mr-3 text-[14px] rounded-[8px] ${!showFormSearch && 'hidden'}`}>Reset</button>
+                    <button type="submmit" form="formSearchOrder" className={`custom-btn w-[110px] px-7 py-[5px] mr-3 text-[14px] rounded-[8px] ${!showFormSearch && 'hidden'}`}>Search</button>
                     <Checkbox onChange={handleSearchOrders} style={{ fontSize: '16px', fontWeight: '600' }}>
                         Search Orders
                     </Checkbox>

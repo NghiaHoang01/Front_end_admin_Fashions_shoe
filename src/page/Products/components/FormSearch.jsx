@@ -35,6 +35,9 @@ const FormSearch = (props) => {
             pageIndex: 1,
             pageSize: 10
         })
+        formSearchProduct.resetFields()
+        setParentCategories([])
+        setChildCategories([])
     }
 
     // brand
@@ -103,7 +106,7 @@ const FormSearch = (props) => {
         <Form
             name="formSearchProduct"
             form={formSearchProduct}
-            id={formSearchProduct}
+            id="formSearchProduct"
             onFinish={onFinish}
             onReset={onReset}
             autoComplete="off"
@@ -241,8 +244,8 @@ const FormSearch = (props) => {
         <div className='mt-1 w-full'>
             <Flex justify='space-between' align='center'>
                 <div>
-                    <button type="reset" form={formSearchProduct} className={`custom-btn w-[110px] px-5 py-[5px] mr-3 text-[14px] rounded-[8px] ${!showFormSearch && 'hidden'}`}>Reset</button>
-                    <button type="submmit" form={formSearchProduct} className={`custom-btn w-[110px] px-7 py-[5px] mr-3 text-[14px] rounded-[8px] ${!showFormSearch && 'hidden'}`}>Search</button>
+                    <button type="reset" form="formSearchProduct" className={`custom-btn w-[110px] px-5 py-[5px] mr-3 text-[14px] rounded-[8px] ${!showFormSearch && 'hidden'}`}>Reset</button>
+                    <button type="submmit" form="formSearchProduct" className={`custom-btn w-[110px] px-7 py-[5px] mr-3 text-[14px] rounded-[8px] ${!showFormSearch && 'hidden'}`}>Search</button>
                     <Checkbox onChange={onChangeSearch} style={{ fontSize: '16px', fontWeight: '600' }}>
                         Search product
                     </Checkbox>

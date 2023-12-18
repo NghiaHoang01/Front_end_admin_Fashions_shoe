@@ -31,6 +31,28 @@ export default ({ paging },
             width: 60,
             align: 'center'
         }, {
+            title: 'Update',
+            dataIndex: 'updateByUser',
+            key: 'updateByUser',
+            width: 80,
+            align: 'center',
+            render: (_, record) => <p>{record.updateByUser !== null && <i className="text-red-custom fa-solid fa-check"></i>}</p>,
+        }, {
+            title: 'Update Date',
+            dataIndex: 'updateAtUser',
+            key: 'updateAtUser',
+            width: 160,
+            align: 'center',
+            hidden: hiddenColumn,
+            ellipsis: true,
+            render: (_, record) => {
+                if (record.updateAtUser !== null) {
+                    return ConvertDateHaveHour(record.updateAtUser)
+                } else {
+                    return <p>...</p>
+                }
+            },
+        }, {
             title: 'Order Date',
             dataIndex: 'orderDate',
             key: 'orderDate',
@@ -43,7 +65,7 @@ export default ({ paging },
             title: 'Delivery Date',
             dataIndex: 'deliveryDate',
             key: 'deliveryDate',
-            width: 160,
+            width: 180,
             align: 'center',
             ellipsis: true,
             hidden: hiddenColumn,
@@ -58,7 +80,7 @@ export default ({ paging },
             title: 'Receiving Date',
             dataIndex: 'receivingDate',
             key: 'receivingDate',
-            width: 160,
+            width: 180,
             align: 'center',
             hidden: hiddenColumn,
             ellipsis: true,
@@ -73,7 +95,7 @@ export default ({ paging },
             title: 'Order By',
             dataIndex: 'email',
             key: 'email',
-            width: 180,
+            width: 160,
             ellipsis: true
         }, {
             title: 'Full Name',
@@ -100,16 +122,14 @@ export default ({ paging },
             dataIndex: 'paymentMethod',
             key: 'paymentMethod',
             width: 100,
-            align: 'center',
-            hidden: hiddenColumn
+            align: 'center'
         },
         {
             title: 'Pay',
             dataIndex: 'pay',
             key: 'pay',
             width: 100,
-            align: 'center',
-            hidden: hiddenColumn
+            align: 'center'
         },
         {
             title: 'Address',
@@ -137,6 +157,7 @@ export default ({ paging },
             dataIndex: 'province',
             key: 'province',
             width: 180,
+            hidden: hiddenColumn,
             render: (_, record) => <ProvinceRow province={record.province} />,
         }, {
             title: 'Transport Fee',
