@@ -6,7 +6,7 @@ import FormSizeOfProDuct from "./FormSizeOfProduct"
 
 const ModalProduct = (props) => {
 
-    const { createProduct, setCreateProduct, isModalProductOpen, setIsModalProductOpen, formProduct, openNotification, sizes,
+    const { createProduct, setCreateProduct, isModalProductOpen, setIsModalProductOpen, formProduct, formSizeOfProduct, openNotification, sizes,
         setSizes, mainImage, setMainImage, secondaryImages, setSecondaryImages } = props
 
     const products = useSelector(productsSelector)
@@ -35,6 +35,7 @@ const ModalProduct = (props) => {
         <Spin tip="Loading" size="large" spinning={products.isLoading}>
             <FormProduct
                 formProduct={formProduct}
+                formSizeOfProduct={formSizeOfProduct}
                 setIsModalProductOpen={setIsModalProductOpen}
                 createProduct={createProduct}
                 setCreateProduct={setCreateProduct}
@@ -47,6 +48,7 @@ const ModalProduct = (props) => {
                 openNotification={openNotification} />
 
             <FormSizeOfProDuct
+                formSizeOfProduct={formSizeOfProduct}
                 sizes={sizes}
                 setSizes={setSizes}
                 openNotification={openNotification} />

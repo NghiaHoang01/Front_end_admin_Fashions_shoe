@@ -1,16 +1,14 @@
 import { Button, Card, Flex, Form, Input, InputNumber, Table } from "antd"
-import { useForm } from "antd/es/form/Form"
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import generateColumnsData from './ColumnsSizeOfProduct'
 
 const FormSizeOfProDuct = (props) => {
 
-    const { sizes, setSizes, openNotification } = props
+    const { formSizeOfProduct, sizes, setSizes, openNotification } = props
 
     const [create, setCreate] = useState(true)
 
-    const [formSizeOfProduct] = useForm()
 
     // update
     const handleUpdate = (record) => {

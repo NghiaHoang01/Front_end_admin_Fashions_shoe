@@ -39,6 +39,8 @@ const PageProducts = (props) => {
 
     const [formProduct] = useForm()
 
+    const [formSizeOfProduct] = useForm()
+
     const [hiddenColumn, setHiddenColumn] = useState(true)
 
     const [createProduct, setCreateProduct] = useState(true)
@@ -207,6 +209,7 @@ const PageProducts = (props) => {
                 setCreateProduct={setCreateProduct}
                 setIsModalProductOpen={setIsModalProductOpen}
                 formProduct={formProduct}
+                formSizeOfProduct={formSizeOfProduct}
                 sizes={sizes}
                 setSizes={setSizes}
                 mainImage={mainImage}

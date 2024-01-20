@@ -36,7 +36,13 @@ export default ({ paging },
             title: 'Update at',
             dataIndex: 'updateAt',
             key: 'updateAt',
-            render: (_, record) => { record.updateAt !== null && <p>{ConvertDate(record.updateAt)}</p> },
+            render: (_, record) => {
+                if (record.updateAt !== null) {
+                    return <p>{ConvertDate(record.updateAt)}</p>
+                } else {
+                    return <p>...</p>
+                }
+            },
             width: 115,
             align: 'center',
             hidden: hiddenColumn

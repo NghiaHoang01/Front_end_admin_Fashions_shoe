@@ -39,7 +39,6 @@ const AppRoutes = () => {
                 <Route path={APP_URLS.URL_FORGOT_PASS} element={<Login form={<ForgotPasswordForm openNotification={openNotification} />} />}></Route>
                 <Route path={APP_URLS.URL_OTP} element={<Login form={<OtpForm openNotification={openNotification} />} />}></Route>
                 <Route path={APP_URLS.URL_RESET_PASS} element={<Login form={<ResetPasswordForm openNotification={openNotification} />} />}></Route>
-
             </Route>
 
             <Route element={<PrivateRoutes />} >

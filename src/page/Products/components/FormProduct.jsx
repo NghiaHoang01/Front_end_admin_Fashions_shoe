@@ -10,7 +10,7 @@ import { ConvertImageToBase64 } from "utils/ConvertImageToBase64";
 
 const FormProduct = (props) => {
 
-    const { formProduct, setIsModalProductOpen, createProduct, setCreateProduct, sizes, setSizes,
+    const { formProduct, formSizeOfProduct, setIsModalProductOpen, createProduct, setCreateProduct, sizes, setSizes,
         mainImage, setMainImage, secondaryImages, setSecondaryImages, openNotification } = props
 
     // useState of brand, parent category and child category
@@ -123,7 +123,6 @@ const FormProduct = (props) => {
             openNotification("Please input size of product !!!", 'error')
         } else {
             const productInfor = { ...values, sizes: sizes }
-            console.log(productInfor)
             let response;
 
             // create or update product
@@ -137,6 +136,7 @@ const FormProduct = (props) => {
             if (response.payload.success) {
                 openNotification(response.payload.message, 'success')
                 formProduct.resetFields()
+                formSizeOfProduct.resetFields()
                 setMainImage([])
                 setSecondaryImages([])
                 setSizes([])
