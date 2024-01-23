@@ -65,7 +65,7 @@ const ResetPasswordForm = (props) => {
                     marginBottom: 30
                 }}
             >
-                <Input.Password placeholder='New password' />
+                <Input.Password placeholder='New password' autoFocus={true} />
             </Form.Item>
 
             <Form.Item

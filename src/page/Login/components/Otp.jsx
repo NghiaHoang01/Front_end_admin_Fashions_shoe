@@ -73,7 +73,7 @@ const OtpForm = (props) => {
                 }}
                 className='form-login--item'
             >
-                <Input placeholder='OTP code' />
+                <Input placeholder='OTP code' autoFocus={true} />
             </Form.Item>
 
             <div className='text-center'>

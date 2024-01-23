@@ -175,15 +175,16 @@ const FormProduct = (props) => {
         }}
         onFinish={onFinishFormProduct}
     >
+        <Form.Item
+            name="id"
+            style={{
+                display: 'none'
+            }}
+        >
+            <Input />
+        </Form.Item>
+
         <Flex style={{ width: '100%' }} justify='space-between'>
-            <Form.Item
-                name="id"
-                style={{
-                    display: 'none'
-                }}
-            >
-                <Input />
-            </Form.Item>
             <Form.Item
                 name="name"
                 label={<p className="text-eclipse text-[16.5px] font-semibold tracking-[0.75px]">Name</p>}
@@ -198,7 +199,7 @@ const FormProduct = (props) => {
                     marginBottom: 20
                 }}
             >
-                <Input />
+                <Input autoFocus={true} />
             </Form.Item>
 
             <Form.Item

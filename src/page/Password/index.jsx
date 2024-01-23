@@ -67,7 +67,7 @@ const PagePassword = (props) => {
                             },
                         ]}
                     >
-                        <Input.Password />
+                        <Input.Password autoFocus={true} />
                     </Form.Item>
 
                     <Form.Item
