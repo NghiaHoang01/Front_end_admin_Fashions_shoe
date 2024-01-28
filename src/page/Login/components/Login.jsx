@@ -27,7 +27,7 @@ const LoginForm = (props) => {
         } else {
             switch (response.payload.status) {
                 case 500:
-                    props.openNotification(response.payload.message, 'error')
+                    props.openNotification("Invalid Password !!!", 'error')
                     break
                 case 403:
                     props.openNotification('User not found !!!', 'error')
@@ -75,7 +75,7 @@ const LoginForm = (props) => {
                 }}
                 className='form-login--item'
             >
-                <Input type="email" placeholder='Email' autoFocus={true} />
+                <Input type="email" placeholder='Email' autoFocus />
             </Form.Item>
 
             <Form.Item

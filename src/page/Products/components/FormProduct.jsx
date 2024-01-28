@@ -199,7 +199,7 @@ const FormProduct = (props) => {
                     marginBottom: 20
                 }}
             >
-                <Input autoFocus={true} />
+                <Input autoFocus />
             </Form.Item>
 
             <Form.Item

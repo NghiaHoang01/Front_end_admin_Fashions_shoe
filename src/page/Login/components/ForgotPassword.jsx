@@ -64,7 +64,7 @@ const ForgotPasswordForm = (props) => {
                 }}
                 className='form-login--item'
             >
-                <Input type='email' placeholder='Email' autoFocus={true} />
+                <Input type='email' placeholder='Email' autoFocus />
             </Form.Item>
 
 

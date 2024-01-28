@@ -48,7 +48,7 @@ const ModalParentCategory = (props) => {
                     marginBottom: 20
                 }}
             >
-                <Input />
+                <Input autoFocus />
             </Form.Item>
         </Form>
     </Modal>
