@@ -10,7 +10,7 @@ export const loginService = (params) => {
 
 // refresh token
 export const refreshTokenService = () => {
-    return request('/api/refresh/token', {
+    return request('/api/refresh/token/admin', {
         method: 'POST'
     })
 }
@@ -48,7 +48,7 @@ export const resetPasswordService = (params) => {
 
 // change password
 export const changePasswordService = (params) => {
-    return request('/api/user/password', {
+    return request('/api/admin/password', {
         method: 'PUT',
         data: params
     })
